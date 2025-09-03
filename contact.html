@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Superior Flooring</title>
+  <meta name="description" content="Get in touch with Superior Flooring for high-quality flooring services. Send us your questions, quotes, or requests using our easy contact form." />
+  <meta name="keywords" content="Superior Flooring, flooring services, contact flooring company, flooring installation, get a flooring quote" />
+  <meta name="author" content="Superior Flooring" />
+  <meta property="og:title" content="Contact Superior Flooring" />
+  <meta property="og:description" content="Need flooring help? Contact Superior Flooring for quotes, consultations, and expert service." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.superiorflooring.com/contact" />
+  <meta property="og:image" content="https://www.superiorflooring.com/images/contact-preview.jpg" />
+  <link rel="stylesheet" href="style.css"/>
+ <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #fff;
+    }
+
+    .contact-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+      animation: fadeInPage 1s ease forwards;
+    }
+
+    @keyframes fadeInPage {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .contact-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background: #333;
+      width: 100%;
+      max-width: 500px;
+      margin: 10px 0 20px;
+      animation: fadeInUp 0.8s ease forwards;
+      animation-delay: 0.2s;
+    }
+
+    .contact-section h3 {
+      text-align: center;
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 0.4s;
+    }
+
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .contact-form {
+      background-color: #1a1a1a;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 0.6s;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .form-group { 
+      margin-bottom: 20px; 
+    }
+
+    .address-group { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 10px; 
+    }
+    .address-group .form-group { 
+      flex: 1 1 48%; 
+    }
+
+    label { 
+      display: block; 
+      margin-bottom: 8px; 
+      font-size: 1rem; 
+      color: #ccc; 
+    }
+
+    input, select, textarea {
+      width: 100%; 
+      padding: 12px; 
+      border: 1px solid #444; 
+      border-radius: 6px;
+      background-color: #222; 
+      color: #fff; 
+      font-size: 1rem;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none; 
+      border-color: #38b1fc; 
+      background-color: #1e1e1e;
+    }
+
+    textarea { 
+      resize: vertical; 
+      min-height: 120px; }
+
+    .form-buttons { 
+      display: flex; 
+      justify-content: space-between;
+      gap: 10px; }
+
+    .submit-btn, .clear-btn {
+      background-color: #38b1fc; color: #fff; border: none; padding: 12px 20px;
+      border-radius: 6px; font-size: 1rem; cursor: pointer; transition: background-color 0.3s ease;
+    }
+    .submit-btn:hover, .clear-btn:hover { background-color: #38b1fc; }
+
+    input[type="file"] { color: #ccc; }
+    /* Success + error message styles */
+.form-alert {
+  margin: 20px auto 0;
+  max-width: 500px;
+  padding: 14px 18px;
+  border-radius: 8px;
+  font-size: 1rem;
+  line-height: 1.4;
+  font-weight: 500;
+  text-align: center;
+  box-shadow: 0 0 8px rgba(0,0,0,0.4);
+  transition: all 0.3s ease;
+}
+
+/* Success look */
+.form-alert:not(.error) {
+  background: #12351a;     /* dark green bg */
+  border: 1px solid #2c6a3f;
+  color: #c9f1d6;          /* light green text */
+}
+
+/* Error look */
+.form-alert.error {
+  background: #351212;     /* dark red bg */
+  border: 1px solid #6a2c2c;
+  color: #f1c9c9;          /* light red text */
+}
+
+/* Add a subtle fade-in animation */
+@keyframes fadeInAlert {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.form-alert {
+  animation: fadeInAlert 0.4s ease;
+}
+.page { padding: 40px 20px; }
+
+/* Soft shadow so sticky nav reads better on dark bg */
+.navbar { box-shadow: 0 2px 10px rgba(0,0,0,.4); }
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+}
+
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="brand">Superior Flooring</div>
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">HOME</a>
+      <span class="nav-div">|</span>
+      <a href="ourwork.html">PHOTOS</a>
+      <span class="nav-div">|</span>
+      <a href="contact.html">CONTACT US</a>
+    </div>
+  </nav>
+  <main class="page">
+  <section class="contact-section">
+    <h2>Contact Us</h2>
+    <hr>
+    <h3>Get a Free Quote Today!</h3>
+
+    <!-- Formspree conversion -->
+    <form
+      class="contact-form"
+      id="contactForm"
+      action="https://formspree.io/f/manbzqov"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <!-- Optional: subject line that appears in the email -->
+      <input type="hidden" name="_subject" value="New Contact from Superior Flooring" />
+      <!-- Basic honeypot (spam trap) -->
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" required />
+        <span class="error" style="color:red;"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <!-- Keep name="email" so Formspree can set reply-to properly -->
+        <input type="email" name="email" id="email" required />
+        <span class="error" style="color:red;"></span>
+      </div>
+
+      <div class="address-group">
+        <div class="form-group">
+          <label for="street">Street</label>
+          <input type="text" name="street" id="street" required />
+          <span class="error" style="color:red;"></span>
+        </div>
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" name="city" id="city" required />
+          <span class="error" style="color:red;"></span>
+        </div>
+        <div class="form-group">
+          <label for="state">State</label>
+          <input list="state-list" name="state" id="state" required />
+          <datalist id="state-list">
+            <!-- options unchanged -->
+          </datalist>
+          <span class="error" style="color:red;"></span>
+        </div>
+        <div class="form-group">
+          <label for="zip">Zip Code</label>
+          <input type="text" name="zip" id="zip" required />
+          <span class="error" style="color:red;"></span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea name="message" id="message" required></textarea>
+        <span class="error" style="color:red;"></span>
+      </div>
+
+      <div class="form-buttons">
+        <button type="submit" id="submitButton" class="submit-btn">Send Message</button>
+        <button type="reset" id="resetButton" class="clear-btn">Clear</button>
+      </div>
+    </form>
+    <div id="formAlert" class="form-alert" hidden></div>
+  </section>
+
+  <footer>
+    <h3>Better Yet, See us in person!</h3>
+    <p>We believe in clear, honest communication every step of the way. Reach out for a free quote or with any questions—we're here to help.</p>
+    <div class="divider"></div>
+    <h4>Superior Flooring</h4>
+    <ul>
+      <li>402-718-2093</li>
+      <a target="_blank" href="https://www.facebook.com/people/Superior-Flooring/100083088794423/"><img class="fb-icon" src="Photos/facebook.png" alt="Facebook"></a>
+    </ul>
+    <div class="divider"></div>
+    <h4>Hours</h4>
+    <ul>
+      <li>Mon: 09:00 am - 05:00 pm</li>
+      <li>Tue: 09:00 am - 05:00 pm</li>
+      <li>Wed: 09:00 am - 05:00 pm</li>
+      <li>Thu: 09:00 am - 05:00 pm</li>
+      <li>Fri: 09:00 am - 05:00 pm</li>
+      <li>Sat: By Appointment</li>
+      <li>Sun: By Appointment</li>
+    </ul>
+    <a href="contact.html" class="footer-cta">Request a Quote</a>
+    <div class="divider"></div>
+    <p>&copy; 2025 Superior Flooring. All rights reserved.</p>
+    </main>
+  </footer>
+
+  <script src="script.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('contactForm');
+  const alertBox = document.getElementById('formAlert');
+  const submitBtn = document.getElementById('submitButton');
+
+  const fields = [
+    { id: 'name', message: 'Name is required.' },
+    { id: 'email', message: 'Email is required.' },
+    { id: 'street', message: 'Street is required.' },
+    { id: 'city', message: 'City is required.' },
+    { id: 'state', message: 'State is required.' },
+    { id: 'zip', message: 'Zip code is required.' },
+    { id: 'message', message: 'Message is required.' }
+  ];
+
+  function showAlert(msg, isError = false) {
+    alertBox.textContent = msg;
+    alertBox.hidden = false;
+    alertBox.classList.toggle('error', isError);
+  }
+  function hideAlert() {
+    alertBox.hidden = true;
+    alertBox.textContent = '';
+    alertBox.classList.remove('error');
+  }
+
+  // Optional: light zip validation to avoid empty/garbage
+  function isValidZip(z) {
+    return /^\d{5}(-\d{4})?$/.test(z.trim());
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();               // always prevent the default page change
+    hideAlert();
+
+    // Clear inline errors
+    document.querySelectorAll('.error').forEach(span => span.textContent = '');
+
+    // Client-side required checks
+    let hasError = false;
+    for (const field of fields) {
+      const input = document.getElementById(field.id);
+      const errorSpan = input?.nextElementSibling;
+      if (input && !input.value.trim()) {
+        if (errorSpan) errorSpan.textContent = field.message;
+        hasError = true;
+      }
+    }
+    // Optional: zip format check
+    const zipEl = document.getElementById('zip');
+    if (zipEl && zipEl.value && !isValidZip(zipEl.value)) {
+      zipEl.nextElementSibling.textContent = 'Enter a valid ZIP (12345 or 12345-6789).';
+      hasError = true;
+    }
+
+    if (hasError) return; // stop here until the user fixes fields
+
+    // Submit via AJAX to Formspree
+    submitBtn.disabled = true;
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      // Try to read helpful error details if any
+      let payload = null;
+      try { payload = await res.json(); } catch { /* noop – not all responses will be JSON */ }
+
+      if (res.ok) {
+        form.reset();
+        showAlert('✅ Thanks! Your message has been sent.');
+      } else {
+        // Surface the real Formspree message if provided
+        const msg =
+          (payload && payload.errors && payload.errors[0]?.message) ||
+          (payload && payload.message) ||
+          `⚠️ Something went wrong (HTTP ${res.status}). Please try again.`;
+
+        showAlert(msg, true);
+        // Helpful for debugging in dev tools:
+        console.log('Formspree error:', res.status, payload);
+      }
+    } catch (err) {
+      showAlert(' ⚠️ Network error. Please check your connection and try again.', true);
+      console.error(err);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
+  });
+
+  // Reset button behavior
+  const resetBtn = document.getElementById('resetButton');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      form.reset();
+      document.querySelectorAll('.error').forEach(span => span.textContent = '');
+      hideAlert();
+      document.getElementById('name')?.focus();
+    });
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="description" content="Explore our professional flooring project gallery at Superior Flooring. See real work, real results, and get inspired for your next renovation." />
+  <meta name="keywords" content="Superior Flooring, flooring gallery, flooring photos, professional floors, home renovation, hardwood, laminate, vinyl" />
+  <meta name="author" content="Superior Flooring Team" />
+  <meta property="og:title" content="Our Work | Superior Flooring" />
+  <meta property="og:description" content="A stunning gallery of Superior Flooring’s completed projects. Browse our best flooring work and get inspired." />
+  <meta property="og:image" content="ourwork/photo1.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="robots" content="index, follow" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Work | Superior Flooring</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #fff;
+    }
+    .navbar {
+      position: sticky;
+      top: 0;
+      background-color: #222;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 20px;
+      z-index: 1000;
+    }
+    .brand {
+      margin: 0;
+      font-size: 1.85rem;
+      letter-spacing: 7px;
+    }
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+    .menu-toggle span {
+      background: #fff;
+      height: 3px;
+      width: 25px;
+      margin: 4px 0;
+      transition: all 0.4s ease;
+    }
+    .menu-toggle.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .menu-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 250px;
+        background-color: rgba(34, 34, 34, 0.98);
+        backdrop-filter: blur(10px);
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.4);
+        flex-direction: column;
+        padding: 80px 20px;
+        gap: 25px;
+        transform: translateX(100%);
+        transition: transform 0.4s ease;
+        z-index: 999;
+      }
+      .nav-links a {
+        padding: 10px;
+        border-radius: 6px;
+        transition: background 0.3s;
+      }
+      .nav-links a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      .nav-links.active {
+        transform: translateX(0);
+      }
+      .nav-div {
+        display: none;
+      }
+      .menu-toggle {
+        display: flex;
+        z-index: 1001;
+      }
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      cursor: pointer;
+      filter: none !important;
+      mix-blend-mode: normal;
+    }
+    .gallery img.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .gallery img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 15px rgba(0, 170, 255, 0.3);
+    }
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1000;
+    }
+    .lightbox.active {
+      visibility: visible;
+      opacity: 1;
+    }
+    .lightbox-content {
+      position: relative;
+    }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+    .nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2.2rem;
+      color: #38b1fc;
+      background: none;
+      border: 2px solid #38b1fc;
+      padding: 8px 16px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+    .nav-arrow:hover {
+      color: #111;
+    }
+    .prev-arrow {
+      left: -60px;
+    }
+    .next-arrow {
+      right: -60px;
+    }
+        footer { 
+      background: linear-gradient(180deg, #1a1a1a, #111); 
+      padding: 60px 20px 30px; 
+      text-align: center; 
+      margin-top: 80px; 
+      border-top: 1px solid rgba(255, 255, 255, 0.05); 
+    }
+
+    footer h3 { 
+      font-size: 1.8rem; 
+      font-weight: 600; 
+      color: #fff; 
+    }
+
+    footer h4 { 
+      font-size: 1.2rem; 
+      font-weight: 500; 
+      color: #ddd; 
+      letter-spacing: 1px; 
+      margin-top: 30px; 
+    }
+
+    footer ul { 
+      list-style: none; 
+      padding: 0; 
+      margin: 10px 0 20px; 
+    }
+
+    footer ul li {
+       margin: 5px 0; 
+       color: #bbb; 
+       font-size: 1rem; 
+      }
+
+    footer p { 
+      font-size: 0.95rem; 
+      line-height: 1.6; 
+      color: #bbb; 
+      max-width: 700px; 
+      margin: 0 auto 30px; 
+    }
+
+    footer .divider { 
+      width: 100px; 
+      height: 2px; 
+      background-color: #333; 
+      margin: 20px auto; 
+    }
+
+    .footer-cta { 
+      display: inline-block; 
+      margin-top: 20px; 
+      padding: 12px 24px; 
+      background-color: #38b1fc; 
+      color: #111; 
+      border-radius: 30px; 
+      text-decoration: none; 
+      font-weight: bold; 
+      transition: background 0.3s; 
+    }
+
+    .fb-icon:hover { 
+      transform: scale(1.5); 
+    }
+
+    .fb-icon { 
+      height: 50px;
+      width: 50px;
+      margin: 30px 0 10px; 
+    }
+    
+    .fb-icon a:hover { 
+      color: #00aaff; 
+    }
+    .footer-cta:hover {
+      background-color: hsl(0, 0%, 100%);
+    }
+        /* Page wrapper so navbar can sit flush at the top */
+    .page { padding: 40px 20px; }
+
+/* Soft shadow so sticky nav reads better on dark bg */
+    .navbar { box-shadow: 0 2px 10px rgba(0,0,0,.4); }
+
+/* Respect reduced motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+    }
+
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="brand">Superior Flooring</div>
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">HOME</a>
+      <span class="nav-div">|</span>
+      <a href="ourwork.html">PHOTOS</a>
+      <span class="nav-div">|</span>
+      <a href="contact.html">CONTACT US</a>
+    </div>
+  </nav>
+ <main class="page">
+    <h1 style="text-align: center; font-size: 2.5rem; margin-bottom: 40px;">Our Work</h1>
+    <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">Browse some of our finest professional flooring installations and get inspired for your own project. From hardwood and vinyl to commercial carpet, we bring quality craftsmanship to every job.</p>
+    <div class="gallery">
+    <img src="ourwork/photo1.jpg" alt="Flooring Example 1" tabindex="0" loading="lazy" aria-label="View Flooring Example 1 in lightbox">
+    <img src="ourwork/photo2.jpg" alt="Flooring Example 2" tabindex="0" loading="lazy" aria-label="View Flooring Example 2 in lightbox">
+    <img src="ourwork/photo3.jpg" alt="Flooring Example 3" tabindex="0" loading="lazy" aria-label="View Flooring Example 3 in lightbox">
+    <img src="ourwork/photo4.jpg" alt="Flooring Example 4" tabindex="0" loading="lazy" aria-label="View Flooring Example 4 in lightbox">
+    <img src="ourwork/photo5.jpg" alt="Flooring Example 5" tabindex="0" loading="lazy" aria-label="View Flooring Example 5 in lightbox">
+    <img src="ourwork/photo6.jpg" alt="Flooring Example 6" tabindex="0" loading="lazy" aria-label="View Flooring Example 6 in lightbox">
+    <img src="ourwork/photo8.jpg" alt="Flooring Example 8" tabindex="0" loading="lazy" aria-label="View Flooring Example 8 in lightbox">
+    <img src="ourwork/photo9.jpg" alt="Flooring Example 9" tabindex="0" loading="lazy" aria-label="View Flooring Example 9 in lightbox">
+    <img src="ourwork/photo10.jpg" alt="Flooring Example 10" tabindex="0" loading="lazy" aria-label="View Flooring Example 10 in lightbox">
+    <img src="ourwork/photo11.jpg" alt="Flooring Example 11" tabindex="0" loading="lazy" aria-label="View Flooring Example 11 in lightbox">
+    <img src="ourwork/photo12.jpg" alt="Flooring Example 12" tabindex="0" loading="lazy" aria-label="View Flooring Example 12 in lightbox">
+    <img src="ourwork/photo13.jpg" alt="Flooring Example 13" tabindex="0" loading="lazy" aria-label="View Flooring Example 13 in lightbox">
+    <img src="ourwork/photo14.jpg" alt="Flooring Example 14" tabindex="0" loading="lazy" aria-label="View Flooring Example 14 in lightbox">
+    <img src="ourwork/photo15.jpg" alt="Flooring Example 15" tabindex="0" loading="lazy" aria-label="View Flooring Example 15 in lightbox">
+    <img src="ourwork/photo16.jpg" alt="Flooring Example 16" tabindex="0" loading="lazy" aria-label="View Flooring Example 16 in lightbox">
+    <img src="ourwork/photo18.jpg" alt="Flooring Example 18" tabindex="0" loading="lazy" aria-label="View Flooring Example 18 in lightbox">
+    <img src="ourwork/photo19.jpg" alt="Flooring Example 19" tabindex="0" loading="lazy" aria-label="View Flooring Example 19 in lightbox">
+    <img src="ourwork/photo23.jpg" alt="Flooring Example 23" tabindex="0" loading="lazy" aria-label="View Flooring Example 23 in lightbox">
+    <img src="ourwork/photo24.jpg" alt="Flooring Example 24" tabindex="0" loading="lazy" aria-label="View Flooring Example 24 in lightbox">
+    <img src="ourwork/photo25.jpg" alt="Flooring Example 25" tabindex="0" loading="lazy" aria-label="View Flooring Example 25 in lightbox">
+    <img src="ourwork/photo26.jpg" alt="Flooring Example 26" tabindex="0" loading="lazy" aria-label="View Flooring Example 26 in lightbox">
+    <img src="ourwork/photo27.jpg" alt="Flooring Example 27" tabindex="0" loading="lazy" aria-label="View Flooring Example 27 in lightbox">
+    <img src="ourwork/photo28.jpg" alt="Flooring Example 28" tabindex="0" loading="lazy" aria-label="View Flooring Example 28 in lightbox">
+    <img src="ourwork/photo29.jpg" alt="Flooring Example 29" tabindex="0" loading="lazy" aria-label="View Flooring Example 29 in lightbox">
+    <img src="ourwork/photo30.jpg" alt="Flooring Example 30" tabindex="0" loading="lazy" aria-label="View Flooring Example 30 in lightbox">
+    <img src="ourwork/photo31.jpg" alt="Flooring Example 31" tabindex="0" loading="lazy" aria-label="View Flooring Example 31 in lightbox">
+    <img src="ourwork/photo32.jpg" alt="Flooring Example 32" tabindex="0" loading="lazy" aria-label="View Flooring Example 32 in lightbox">
+    <img src="ourwork/photo33.jpg" alt="Flooring Example 33" tabindex="0" loading="lazy" aria-label="View Flooring Example 33 in lightbox">
+    <img src="ourwork/photo34.jpg" alt="Flooring Example 34" tabindex="0" loading="lazy"aria-label="View Flooring Example 34 in lightbox">
+    <img src="ourwork/photo35.jpg" alt="Flooring Example 35" tabindex="0" loading="lazy" aria-label="View Flooring Example 35 in lightbox">
+    <img src="ourwork/photo36.jpg" alt="Flooring Example 36" tabindex="0" loading="lazy" aria-label="View Flooring Example 36 in lightbox">
+    <img src="ourwork/photo37.jpg" alt="Flooring Example 37" tabindex="0" loading="lazy" aria-label="View Flooring Example 37 in lightbox">
+    <img src="ourwork/photo38.jpg" alt="Flooring Example 38" tabindex="0" loading="lazy" aria-label="View Flooring Example 38 in lightbox">
+    <img src="ourwork/photo39.jpg" alt="Flooring Example 39" tabindex="0" loading="lazy" aria-label="View Flooring Example 39 in lightbox">
+    <img src="ourwork/photo40.jpg" alt="Flooring Example 40" tabindex="0" loading="lazy" aria-label="View Flooring Example 40 in lightbox">
+    <img src="ourwork/photo41.jpg" alt="Flooring Example 41" tabindex="0" loading="lazy" aria-label="View Flooring Example 41 in lightbox">
+    <img src="ourwork/photo41.jpg" alt="Flooring Example 41" tabindex="0" loading="lazy" aria-label="View Flooring Example 41 in lightbox">
+    <img src="ourwork/photo42.jpg" alt="Flooring Example 42" tabindex="0" loading="lazy" aria-label="View Flooring Example 42 in lightbox">
+    <img src="ourwork/photo43.jpg" alt="Flooring Example 43" tabindex="0" loading="lazy" aria-label="View Flooring Example 43 in lightbox">
+    <img src="ourwork/photo44.jpg" alt="Flooring Example 44" tabindex="0" loading="lazy" aria-label="View Flooring Example 44 in lightbox">
+    <img src="ourwork/photo45.jpg" alt="Flooring Example 45" tabindex="0" loading="lazy" aria-label="View Flooring Example 45 in lightbox">
+    <img src="ourwork/photo46.jpg" alt="Flooring Example 46" tabindex="0" loading="lazy" aria-label="View Flooring Example 46 in lightbox">
+    <img src="ourwork/photo47.jpg" alt="Flooring Example 47" tabindex="0" loading="lazy" aria-label="View Flooring Example 47 in lightbox">
+    <img src="ourwork/photo48.jpg" alt="Flooring Example 48" tabindex="0" loading="lazy" aria-label="View Flooring Example 48 in lightbox">
+  </div>
+  </main>
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <span class="nav-arrow prev-arrow" id="prevBtn">&#10094;</span>
+      <img src="" alt="Expanded view" id="lightbox-img">
+      <span class="nav-arrow next-arrow" id="nextBtn">&#10095;</span>
+    </div>
+  </div>
+  <footer>
+    <h3>Better Yet, See us in person!</h3>
+    <p>We believe in clear, honest communication every step of the way. Reach out for a free quote or with any questions—we're here to help.</p>
+    <div class="divider"></div>
+    <h4>Superior Flooring</h4>
+    <ul>
+      <li>402-718-2093</li>
+      <a target="_blank" href="https://www.facebook.com/people/Superior-Flooring/100083088794423/"><img class="fb-icon" src="Photos/facebook.png"></a>
+    </ul>
+    <div class="divider"></div>
+    <h4>Hours</h4>
+    <ul>
+      <li>Mon: 09:00 am - 05:00 pm</li>
+      <li>Tue: 09:00 am - 05:00 pm</li>
+      <li>Wed: 09:00 am - 05:00 pm</li>
+      <li>Thu: 09:00 am - 05:00 pm</li>
+      <li>Fri: 09:00 am - 05:00 pm</li>
+      <li>Sat: By Appointment</li>
+      <li>Sun: By Appointment</li>
+    </ul>
+    <a href="contact.html" class="footer-cta">Request a Quote</a>
+    <div class="divider"></div>
+    <p>&copy; 2025 Superior Flooring. All rights reserved.</p>
+  </footer>
+<script>
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.getElementById('nav-links');
+const navLinkItems = navLinks.querySelectorAll('a');
+
+menuToggle.addEventListener('click', () => {
+  menuToggle.classList.toggle('open');
+  navLinks.classList.toggle('active');
+});
+
+navLinkItems.forEach(link => {
+  link.addEventListener('click', () => {
+    menuToggle.classList.remove('open');
+    navLinks.classList.remove('active');
+  });
+});
+
+const images = document.querySelectorAll('.gallery img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+let currentIndex = 0;
+let startX = 0;
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+images.forEach((img, index) => {
+  observer.observe(img);
+  img.addEventListener('click', () => {
+    currentIndex = index;
+    updateLightbox();
+    lightbox.classList.add('active');
+  });
+});
+
+function updateLightbox() {
+  const cleanSrc = images[currentIndex].getAttribute('src');
+  lightboxImg.setAttribute('src', cleanSrc);
+  lightboxImg.style.filter = 'none';
+  lightboxImg.style.mixBlendMode = 'normal';
+}
+
+prevBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  updateLightbox();
+});
+
+nextBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  currentIndex = (currentIndex + 1) % images.length;
+  updateLightbox();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (!lightbox.classList.contains('active')) return;
+  if (e.key === 'ArrowLeft') {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateLightbox();
+  } else if (e.key === 'ArrowRight') {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateLightbox();
+  } else if (e.key === 'Escape') {
+    lightbox.classList.remove('active');
+  }
+});
+
+lightbox.addEventListener('click', () => {
+  lightbox.classList.remove('active');
+});
+
+lightboxImg.addEventListener('touchstart', (e) => {
+  startX = e.touches[0].clientX;
+});
+
+lightboxImg.addEventListener('touchend', (e) => {
+  const endX = e.changedTouches[0].clientX;
+  const diff = startX - endX;
+
+  if (Math.abs(diff) > 50) {
+    if (diff > 0) {
+      currentIndex = (currentIndex + 1) % images.length;
+    } else {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+    }
+    updateLightbox();
+  }
+});
+
+  </script>
+</body>
+</html>
